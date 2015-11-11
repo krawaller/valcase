@@ -24,5 +24,5 @@ ReactDOM.render(
 // setup listeners
 setTimeout(function(){
 	store.dispatch( actions.startListeningToAuth() );
-	store.dispatch( actions.startListeningToCompanyMood() );
+	store.dispatch( actions.startListeningToPolls() );
 });

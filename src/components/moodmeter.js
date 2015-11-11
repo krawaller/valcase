@@ -11,10 +11,17 @@ var Moodmeter = React.createClass({
 		companymood: ptypes.any
 	},
 	render: function(){
-		var cm = this.props.companymood, rows = [">:(",":(",":|",":)",":D"].map(function(mood,n){
-			return <span key={n}>{mood} {cm ? cm["mood"+(n+1)] : "?"}</span>;
-		});
-		return (<div>
+		var p = this.props,
+			mood = p.companymood,
+			currentvote = mood.votes && mood.votes[p.uid],
+			rows = [">:(",":(",":|",":)",":D"].map(function(opt,n){
+				var disabled = p.voting || !p.uid || currentvote === n,
+					className = n===currentvote?"currentvote":"";
+				return <button onClick={p.vote.bind(this,n)} key={n} className={className} disabled={disabled}>
+					{opt}<br/>{mood.optionvotes[n]}
+				</button>;
+			});
+		return (<div className="moodvotes">
 			{rows}
 		</div>);
 	}
@@ -23,8 +30,18 @@ var Moodmeter = React.createClass({
 // now we connect the component to the Redux store:
 
 var mapStateToProps = function(state){
-	// This component will have access to `appState.auth` through `this.props.auth`
-	return {companymood:state.moods.companymood};
+	// This component will have access to blah
+	return {
+		companymood:state.polls.polldata.companymood,
+		uid: state.auth.uid,
+		voting: state.polls.voting
+	};
 };
 
-module.exports = ReactRedux.connect(mapStateToProps)(Moodmeter);
+var mapDispatchToProps = function(dispatch){
+	return {
+		vote: function(option){ dispatch(actions.voteInPoll("companymood",option)); },
+	}
+};
+
+module.exports = ReactRedux.connect(mapStateToProps,mapDispatchToProps)(Moodmeter);

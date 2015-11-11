@@ -6,17 +6,25 @@ These actions are imported by Redux-aware components who need them, in our case 
 
 var C = require("../constants"),
 	Firebase = require("firebase");
-	ref = new Firebase(C.FIREBASE);
+	fireRef = new Firebase(C.FIREBASE);
 
 module.exports = {
 	startListeningToAuth: function(){
 		return function(dispatch,getState){
-			ref.onAuth(function(authData){
-				if (authData){
+			fireRef.onAuth(function(authData){
+				if (authData){ 
+					// log in user inside the app
 					dispatch({
 						type: C.LOGIN_USER,
 						uid: authData.uid,
 						username: authData.facebook.displayName
+					});
+					// update remote user statistics
+					fireRef.child("users").child(authData.uid).transaction(function(currentdata){
+						return Object.assign(currentdata||{},{
+							username: authData.facebook.displayName,
+							logins: (currentdata && currentdata.logins || 0)+1
+						});
 					});
 				} else {
 					if (getState().auth.currently !== C.ANONYMOUS){ // might have set local logout synchronously
@@ -29,7 +37,7 @@ module.exports = {
 	attemptLogin: function(){
 		return function(dispatch,getState){
 			dispatch({type:C.ATTEMPTING_LOGIN});
-			ref.authWithOAuthPopup("facebook", function(error, authData) {
+			fireRef.authWithOAuthPopup("facebook", function(error, authData) {
 				if (error) {
 					alert("Login error!"); // TODO - nicify error msg
 					dispatch({type:C.LOGOUT});
@@ -42,7 +50,7 @@ module.exports = {
 	logoutUser: function(){
 		return function(dispatch,getState){
 			dispatch({type:C.LOGOUT}); // don't really need to do this, but nice to get immediate feedback
-			ref.unauth();
+			fireRef.unauth();
 		}
 	}
 };

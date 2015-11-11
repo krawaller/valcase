@@ -1,4 +1,4 @@
 var authActions = require("./auth"),
-	moodActions = require("./mood");
+	pollActions = require("./polls");
 
-module.exports = Object.assign({},authActions,moodActions);
+module.exports = Object.assign({},authActions,pollActions);

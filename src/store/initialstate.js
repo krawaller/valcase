@@ -16,10 +16,17 @@ module.exports = function(){
 			username: null,
 			uid: null
 		},
-		// moods
-		moods: {
-			usermood: null,
-			companymood: null
+		// polls
+		polls: {
+			voting: false,
+			polldata: {
+				companymood: {
+					options: ["mood1","mood2","mood3","mood4","mood5"],
+					optionvotes: [0,0,0,0,0],
+					votes: {},
+					totalvotes: 0
+				}
+			}
 		}
 	};
 };
