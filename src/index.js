@@ -26,4 +26,5 @@ setTimeout(function(){
 	store.dispatch( actions.startListeningToPolls() );
 	store.dispatch( actions.startListeningToUsers() );
 	store.dispatch( actions.startListeningToChat() );
+	store.dispatch( actions.startListeningToTweets() );
 });

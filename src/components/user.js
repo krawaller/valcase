@@ -29,6 +29,8 @@ var User = React.createClass({
 
 		return (<div>
 			<h4>{user.username}</h4>
+			<p>Chats: {user.chats}</p>
+			<p>Logins: {user.logins}</p>
 			<Textblock content={user.description||""} canedit={!p.waiting && memberid===p.uid} editcb={editcb} />
 		</div>);
 	}

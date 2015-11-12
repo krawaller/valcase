@@ -7,20 +7,26 @@ var React = require('react'),
 	Authpanel = require('./authpanel'),
     Moodmeter = require('./moodmeter'),
     Chatpanel = require('./chatpanel'),
-    Navbar = require('./navbar');
+    Navbar = require('./navbar'),
+    Twitterfeed = require("./twitterfeed");
 
 var Wrapper = React.createClass({
     render: function() {
         return (
             <div className="wrapper">
-                <h2>Poolia intranet prototype</h2>
+                <header>
+                    <h2>Poolia intranet prototype</h2>
+                    <Authpanel/>
+                    <Moodmeter/>
+                </header>
                 <Navbar />
-                <Authpanel/>
-                <Moodmeter/>
-                <div>
+                <div className="center">
                 	{this.props.children}
                 </div>
-                <Chatpanel/>
+                <aside className="rightpanel">
+                    <Chatpanel/>
+                    <Twitterfeed />
+                </aside>
             </div>
         );
     }

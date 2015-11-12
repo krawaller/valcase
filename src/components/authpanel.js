@@ -4,7 +4,8 @@ var React = require("react"),
 	actions = require("../actions"),
 	C = require("../constants"),
 	Memberbadge = require("./memberbadge"),
-	Link = require("react-router").Link;
+	Link = require("react-router").Link,
+	B = require("react-bootstrap");
 
 var Authpanel = React.createClass({
 	propTypes: {
@@ -22,19 +23,19 @@ var Authpanel = React.createClass({
 		var p = this.props, auth = p.auth;
 		switch(auth.currently){
 			case C.LOGGED_IN: return (
-				<div>
-					<span>Logged in as <Memberbadge uid={auth.uid}/></span>
-					<button onClick={p.logoutUser}>Log out</button>
+				<div className="authpanel">
+					<span>Logged in as <Memberbadge uid={auth.uid}/></span><br/>
+					<B.Button bsSize="xsmall" onClick={p.logoutUser}>Log out</B.Button>
 				</div>
 			);
 			case C.AWAITING_AUTH_RESPONSE: return (
-				<div>
+				<div className="authpanel">
 					<span>...let's see...</span>
 				</div>
 			);
 			default: return (
-				<div>
-					<button onClick={p.attemptLogin}>Log in ffs!</button>
+				<div className="authpanel">
+					<B.Button bsSize="xsmall" onClick={p.attemptLogin}>Log in ffs!</B.Button>
 				</div>
 			);
 		}

@@ -1,4 +1,5 @@
-var React = require("react");
+var React = require("react"),
+	Twitterfeed = require("./twitterfeed");
 
 var Home = React.createClass({
 	render: function(){

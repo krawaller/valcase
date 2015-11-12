@@ -10,6 +10,8 @@ var C = require("../constants"),
 
 module.exports = function(){
 	return {
+		// tweets
+		tweets: [],
 		// feedback
 		feedback: {},
 		// auth data

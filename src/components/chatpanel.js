@@ -1,9 +1,9 @@
 var React = require("react"),
-ptypes = React.PropTypes,
-ReactRedux = require("react-redux"),
-actions = require("../actions"),
-C = require("../constants"),
-Memberbadge = require("./memberbadge");
+	ptypes = React.PropTypes,
+	ReactRedux = require("react-redux"),
+	actions = require("../actions"),
+	C = require("../constants"),
+	Memberbadge = require("./memberbadge");
 
 var Chatpanel = React.createClass({
 	propTypes: {

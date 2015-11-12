@@ -3,7 +3,8 @@ var React = require("react"),
 	ReactRedux = require("react-redux"),
 	actions = require("../actions"),
 	C = require("../constants"),
-	_ = require("lodash");
+	_ = require("lodash"),
+	B = require("react-bootstrap");
 
 var Moodmeter = React.createClass({
 	propTypes: {
@@ -15,14 +16,15 @@ var Moodmeter = React.createClass({
 			mood = p.companymood,
 			currentvote = mood.votes && mood.votes[p.uid],
 			rows = [">:(",":(",":|",":)",":D"].map(function(opt,n){
-				var disabled = p.voting || !p.uid,
-					className = n===currentvote?"currentvote":"";
-				return <button onClick={p.vote.bind(this,n)} key={n} className={className} disabled={disabled}>
-					{opt}<br/>{mood.optionvotes[n]}
-				</button>;
+				var disabled = p.voting || !p.uid;
+				return <B.Button onClick={p.vote.bind(this,n)} key={n} active={n===currentvote} disabled={disabled}>
+					{opt}<span className="moodcount">{mood.optionvotes[n]}</span>
+				</B.Button>;
 			});
-		return (<div className="moodvotes">
-			{rows}
+		return (<div className="moodmeter">
+			<B.ButtonGroup>
+				{rows}
+			</B.ButtonGroup>
 		</div>);
 	}
 });
