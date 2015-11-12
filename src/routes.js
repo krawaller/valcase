@@ -8,11 +8,15 @@ var React = require('react'),
     IndexRoute = ReactRouter.IndexRoute,
     Wrapper = require('./components/wrapper'),
     Home = require('./components/home'),
-    User = require('./components/user');
+    User = require('./components/user'),
+    Roster = require('./components/roster');
 
 module.exports = (
     <Route path="/" component={Wrapper}>
         <IndexRoute component={Home} />
-        <Route path="/members/:memberid" component={User} />
+        <Route path="/members/">
+            <IndexRoute component={Roster} />
+            <Route path="/members/:memberid" component={User} />
+        </Route>
     </Route>
 );

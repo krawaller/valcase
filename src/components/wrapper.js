@@ -6,13 +6,15 @@ contained in `this.props.children` and rendered out.
 var React = require('react'),
 	Authpanel = require('./authpanel'),
     Moodmeter = require('./moodmeter'),
-    Chatpanel = require('./chatpanel');
+    Chatpanel = require('./chatpanel'),
+    Navbar = require('./navbar');
 
 var Wrapper = React.createClass({
     render: function() {
         return (
             <div className="wrapper">
                 <h2>Poolia intranet prototype</h2>
+                <Navbar />
                 <Authpanel/>
                 <Moodmeter/>
                 <div>

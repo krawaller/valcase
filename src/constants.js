@@ -3,6 +3,8 @@ This file contains all constants in the app.
 */
 
 module.exports = {
+	MIN_TEXT_LENGTH: 5,
+
 	// UI FEEDBACK
 	DISPLAY_ERROR: "DISPLAY_ERROR",
 	DISPLAY_SUCCESS: "DISPLAY_SUCCESS",
@@ -30,7 +32,7 @@ module.exports = {
 	AWAIT_CHAT_RESPONSE: "AWAIT_CHAT_RESPONSE",
 	RECEIVE_CHAT_RESPONSE: "RECEIVE_CHAT_RESPONSE",
 
-	MAX_CHATS: 20,
+	MAX_CHATS: 5,
 	MIN_CHAT_LENGTH: 1,
 
 	// USER ACTIONS

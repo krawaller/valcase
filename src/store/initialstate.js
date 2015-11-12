@@ -34,7 +34,8 @@ module.exports = function(){
 		users: {
 			userdata: {
 				
-			}
+			},
+			editing: false
 		},
 		// chat
 		chat: {

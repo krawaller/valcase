@@ -34,21 +34,21 @@ var Chatpanel = React.createClass({
 		return false;
 	},
 	render: function(){
-		var rows = this.props.chatdata.map(function(msg,n){
+		var p = this.props, rows = p.chatdata.map(function(msg,n){
 			return (<div key={n} className={"chatmsg "+(msg.local?"local":"")}>
 				<Memberbadge uid={msg.uid} />: {msg.message}
 			</div>);
 		});
 		return (<div className="chatpanel">
 			<div className="chatmessages">{rows}</div>
-			<form onSubmit={this.onSubmit}>
+			{p.uid ? <form onSubmit={this.onSubmit}>
 				<div className='input-group'>
 					<input className='form-control' type='text' ref='field'/>
 					<span className='input-group-btn'>
 						<button className='btn btn-default' type='submit'>Send!</button>
 					</span>
 				</div>
-			</form>
+			</form> : ""}
 		</div>);
 	}
 });

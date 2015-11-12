@@ -18,7 +18,13 @@ module.exports = {
 	},
 	updateUserDescription: function(userid,content){
 		return function(dispatch,getState){
-			usersRef.child("userdata") // WOOOOOOOOOOOO
+			dispatch({type:C.AWAIT_USER_RESPONSE});
+			usersRef.child(userid).child("description").set(content,function(error){
+				dispatch({type:C.RECEIVE_USER_RESPONSE});
+				if (error){
+					dispatch({type:C.DISPLAY_ERROR,error:"Update failed!"});
+				}
+			});
 		}
 	}
 };
