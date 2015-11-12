@@ -15,7 +15,7 @@ var Moodmeter = React.createClass({
 			mood = p.companymood,
 			currentvote = mood.votes && mood.votes[p.uid],
 			rows = [">:(",":(",":|",":)",":D"].map(function(opt,n){
-				var disabled = p.voting || !p.uid || currentvote === n,
+				var disabled = p.voting || !p.uid,
 					className = n===currentvote?"currentvote":"";
 				return <button onClick={p.vote.bind(this,n)} key={n} className={className} disabled={disabled}>
 					{opt}<br/>{mood.optionvotes[n]}

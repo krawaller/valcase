@@ -10,6 +10,8 @@ var C = require("../constants"),
 
 module.exports = function(){
 	return {
+		// feedback
+		feedback: {},
 		// auth data
 		auth: {
 			currently: C.ANONYMOUS,
@@ -27,6 +29,17 @@ module.exports = function(){
 					totalvotes: 0
 				}
 			}
+		},
+		// users
+		users: {
+			userdata: {
+				
+			}
+		},
+		// chat
+		chat: {
+			chatdata: [],
+			chatting: false
 		}
 	};
 };

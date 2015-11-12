@@ -5,7 +5,8 @@ contained in `this.props.children` and rendered out.
 
 var React = require('react'),
 	Authpanel = require('./authpanel'),
-    Moodmeter = require('./moodmeter');
+    Moodmeter = require('./moodmeter'),
+    Chatpanel = require('./chatpanel');
 
 var Wrapper = React.createClass({
     render: function() {
@@ -17,6 +18,7 @@ var Wrapper = React.createClass({
                 <div>
                 	{this.props.children}
                 </div>
+                <Chatpanel/>
             </div>
         );
     }

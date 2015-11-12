@@ -7,10 +7,12 @@ var React = require('react'),
     Route = ReactRouter.Route,
     IndexRoute = ReactRouter.IndexRoute,
     Wrapper = require('./components/wrapper'),
-    Home = require('./components/home');
+    Home = require('./components/home'),
+    User = require('./components/user');
 
 module.exports = (
     <Route path="/" component={Wrapper}>
         <IndexRoute component={Home} />
+        <Route path="/members/:memberid" component={User} />
     </Route>
 );

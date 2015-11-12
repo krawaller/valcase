@@ -5,7 +5,7 @@ These actions are imported by Redux-aware components who need them, in our case 
 */
 
 var C = require("../constants"),
-	Firebase = require("firebase");
+	Firebase = require("firebase"),
 	fireRef = new Firebase(C.FIREBASE);
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
 			dispatch({type:C.ATTEMPTING_LOGIN});
 			fireRef.authWithOAuthPopup("facebook", function(error, authData) {
 				if (error) {
-					alert("Login error!"); // TODO - nicify error msg
+					dispatch({type:C.DISPLAY_ERROR,error:"Login failed!"});
 					dispatch({type:C.LOGOUT});
 				} else {
 					// no need to do anything here, listener above will deal with it

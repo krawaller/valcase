@@ -20,9 +20,10 @@ ReactDOM.render(
 	document.getElementById("root")
 );
 
-
 // setup listeners
 setTimeout(function(){
 	store.dispatch( actions.startListeningToAuth() );
 	store.dispatch( actions.startListeningToPolls() );
+	store.dispatch( actions.startListeningToUsers() );
+	store.dispatch( actions.startListeningToChat() );
 });

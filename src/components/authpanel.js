@@ -2,7 +2,9 @@ var React = require("react"),
 	ptypes = React.PropTypes,
 	ReactRedux = require("react-redux"),
 	actions = require("../actions"),
-	C = require("../constants");
+	C = require("../constants"),
+	Memberbadge = require("./memberbadge"),
+	Link = require("react-router").Link;
 
 var Authpanel = React.createClass({
 	propTypes: {
@@ -21,7 +23,7 @@ var Authpanel = React.createClass({
 		switch(auth.currently){
 			case C.LOGGED_IN: return (
 				<div>
-					<span>Logged in as {auth.username}</span>
+					<span>Logged in as <Memberbadge uid={auth.uid}/></span>
 					<button onClick={p.logoutUser}>Log out</button>
 				</div>
 			);

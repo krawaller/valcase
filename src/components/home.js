@@ -1,7 +1,4 @@
-var React = require("react"),
-	ptypes = React.PropTypes,
-	ReactRedux = require("react-redux"),
-	actions = require("../actions");
+var React = require("react");
 
 var Home = React.createClass({
 	render: function(){
